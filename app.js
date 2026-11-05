@@ -20,10 +20,10 @@
   const TEAL = "#14b8a6";
   const TYPES = ["Construction", "Interiors", "Renovation", "Real Estate"];
   const TIERS = ["Budget", "Factory / Modular", "Manual (carpenter)", "Premium"];
-  const WORK_CATS = ["Material", "Labour", "Contract"];
+  const WORK_CATS = ["-", "Material", "Labour", "Contract"];
 
 
-  const RE_CATS = ["Property/Plot Cost", "Registration & Stamp Duty", "Brokerage/Commission", "Legal & Documentation", "Development/Amenities", "Other"];
+  const RE_CATS = ["-", "Property/Plot Cost", "Registration & Stamp Duty", "Brokerage/Commission", "Legal & Documentation", "Development/Amenities", "Other"];
   const catsFor = (t) => (t === "Real Estate" ? RE_CATS : WORK_CATS);
 
   const TIER_RATES = {
@@ -921,7 +921,7 @@ On registration | 50`,
     const cats = catsFor(d.type);
     const breakDown = Array.from(new Set([...cats, ...d.items.map((i) => i.k)]))
       .map((k) => ({ k, v: d.items.filter((i) => i.k === k).reduce((s, i) => s + i.q * i.r, 0) }))
-      .filter((x) => x.v > 0 || (d.type !== "Real Estate" && x.k !== "Contract"));
+      .filter((x) => x.k !== "-").filter((x) => x.v > 0 || (d.type !== "Real Estate" && x.k !== "Contract"));
     const canEditRates = isAdmin();
     return `<div class="card">
       <div class="card-head"><h2>Estimate · ${esc(d.qno)}</h2>${btn("New estimate", "new-doc")}</div>
