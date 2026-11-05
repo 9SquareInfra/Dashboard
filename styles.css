@@ -244,3 +244,7 @@ input[data-prof-name], select[data-prof-role] {
   color: #111 !important; background: #fff !important; -webkit-text-fill-color: #111 !important;
   border: 1px solid #c9a24a; border-radius: 6px; padding: 6px 8px; min-width: 160px;
 }
+
+.btn.btn-wa{background:#25D366 !important;color:#fff !important;border:none !important;font-weight:700;font-size:1.05rem;padding:12px 22px;border-radius:10px;box-shadow:0 0 0 3px rgba(37,211,102,.35),0 6px 18px rgba(37,211,102,.45);animation:waPulse 1.8s infinite}
+.btn.btn-wa:hover{background:#1ebe5b !important}
+@keyframes waPulse{0%,100%{box-shadow:0 0 0 3px rgba(37,211,102,.35)}50%{box-shadow:0 0 0 9px rgba(37,211,102,.12)}}

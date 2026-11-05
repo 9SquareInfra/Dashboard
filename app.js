@@ -321,7 +321,7 @@ On registration | 50`,
         </div>
         <div class="lh-right">${esc(s.engineer)}${s.qual ? ", " + esc(s.qual) : ""}<br/>${esc(s.role)}<br/>${esc(s.phone)}</div>
       </div>
-      <div class="lh-addr">Address: ${esc(s.name)}, ${esc(s.address)}.${s.branch ? " Branch: " + esc(s.branch) + "." : ""}${s.email ? " · " + esc(s.email) : ""}${s.gstin ? " · GSTIN: " + esc(s.gstin) : ""}${(state.doc && (state.doc.preparedByName || state.doc.preparedBy)) ? " · Prepared by " + esc(state.doc.preparedByName || state.doc.preparedBy) : ""}</div>
+      <div class="lh-addr">Address: ${esc(s.name)}, ${esc(s.address)}.${s.branch ? " Branch: " + esc(s.branch) + "." : ""}${s.email ? " · " + esc(s.email) : ""}${s.gstin ? " · GSTIN: " + esc(s.gstin) : ""}</div>
     </div>`;
   }
 
@@ -901,10 +901,10 @@ On registration | 50`,
       actions += btn("Save draft", "save-draft") + btn("Send for approval", "send-approval", "btn-primary");
     }
     if (isManager() && st === "pending_approval") {
-      actions += btn("Approve", "approve", "btn-primary") + btn("Send back", "send-back");
+      actions += btn("✅ Approve & Send on WhatsApp", "approve-wa", "btn-wa") + btn("Approve only", "approve") + btn("Send back", "send-back");
     }
     if (isManager() && st === "approved") {
-      actions += btn("Send to customer on WhatsApp", "wa-send", "btn-primary") + btn("Download PDF", "pdf-only");
+      actions += btn("📲 Send to customer on WhatsApp", "wa-send", "btn-wa") + btn("Download PDF", "pdf-only");
     }
     if (isManager() && (st === "sent" || st === "approved")) {
       actions += btn("Mark Accepted", "mark-accepted") + btn("Mark Rejected", "mark-rejected");
@@ -1234,6 +1234,14 @@ On registration | 50`,
           if (a === "save-draft") { await saveDoc("draft"); return; }
           if (a === "save") { await saveDoc(); return; }
           if (a === "send-approval") { await saveDoc("pending_approval"); return; }
+          if (a === "approve-wa") {
+            if (!isManager()) throw new Error("Manager/admin only");
+            state.doc.approvedBy = currentUserId();
+            state.doc.managerComment = "";
+            await saveDoc("approved");
+            await sendWhatsApp();
+            return;
+          }
           if (a === "approve") {
             if (!isManager()) throw new Error("Manager/admin only");
             state.doc.approvedBy = currentUserId();
