@@ -227,3 +227,20 @@ a { color: var(--gold); }
   text-decoration: underline; padding: 0;
 }
 .session-role { text-transform: capitalize; }
+
+/* Users & roles: readable inputs and selects */
+#view-users input, #view-users select,
+.users-table input, .users-table select,
+table input[type="text"], table select {
+  color: #111 !important;
+  background: #fff !important;
+  -webkit-text-fill-color: #111 !important;
+  border: 1px solid #c9a24a;
+  border-radius: 6px;
+  padding: 6px 8px;
+}
+select option { color: #111; background: #fff; }
+input[data-prof-name], select[data-prof-role] {
+  color: #111 !important; background: #fff !important; -webkit-text-fill-color: #111 !important;
+  border: 1px solid #c9a24a; border-radius: 6px; padding: 6px 8px; min-width: 160px;
+}
