@@ -156,3 +156,74 @@ a { color: var(--gold); }
   }
   .no-print { display: none !important; }
 }
+
+/* Session header */
+.topbar { justify-content: flex-start; }
+.topbar-text { flex: 1 1 auto; min-width: 180px; }
+.session-box { margin-left: auto; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.session-name { font-weight: 600; font-size: 0.92rem; }
+.session-role {
+  margin-left: 8px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+  background: rgba(201,160,84,.2); color: var(--gold); padding: 2px 8px; border-radius: 999px;
+}
+
+/* Login */
+.login-wrap {
+  min-height: 100vh; display: flex; align-items: center; justify-content: center;
+  padding: 24px 16px;
+  background:
+    radial-gradient(ellipse at 20% 10%, rgba(201,160,84,.18), transparent 50%),
+    radial-gradient(ellipse at 80% 90%, rgba(20,184,166,.12), transparent 45%),
+    var(--bg-main);
+}
+.login-card {
+  width: 100%; max-width: 400px; background: var(--bg-secondary);
+  border: 1px solid var(--border); border-radius: 16px; padding: 28px 24px 24px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.45);
+}
+.login-logo { display: block; width: 88px; height: 88px; margin: 0 auto; object-fit: contain; }
+.login-tag { text-align: center; color: var(--text-sec); font-size: 0.85rem; margin: 6px 0 18px; }
+.login-title { font-family: var(--heading); font-size: 1.35rem; text-align: center; margin: 0 0 16px; }
+.login-error {
+  background: rgba(248,113,113,.12); border: 1px solid rgba(248,113,113,.4);
+  color: #fecaca; padding: 8px 12px; border-radius: 8px; margin-bottom: 12px; font-size: 0.9rem;
+}
+.login-btn { width: 100%; margin-top: 8px; padding: 12px; font-size: 1rem; }
+.login-note { color: var(--text-muted); font-size: 0.75rem; margin: 16px 0 0; text-align: center; line-height: 1.4; }
+.login-card .field { margin-bottom: 12px; }
+
+/* Workflow & statuses (Supabase) */
+.workflow {
+  display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between;
+  background: rgba(201,160,84,.08); border: 1px solid var(--border); border-radius: 12px;
+  padding: 10px 14px; margin-bottom: 14px;
+}
+.mgr-comment {
+  width: 100%; background: rgba(248,113,113,.1); border: 1px solid rgba(248,113,113,.35);
+  color: #fecaca; padding: 8px 12px; border-radius: 8px; margin-bottom: 8px; font-size: 0.9rem;
+}
+.pending-box {
+  background: rgba(251,191,36,.1); border: 1px solid rgba(251,191,36,.35);
+  border-radius: 12px; padding: 12px 14px; margin-bottom: 14px;
+}
+.pending-box ul { margin: 8px 0 0; padding-left: 18px; }
+.pending-box li { margin: 6px 0; }
+.status {
+  display: inline-block; font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .02em; padding: 3px 8px; border-radius: 999px;
+  background: rgba(148,163,184,.2); color: #cbd5e1;
+}
+.status-draft { background: rgba(148,163,184,.2); color: #cbd5e1; }
+.status-pending_approval { background: rgba(251,191,36,.2); color: #fcd34d; }
+.status-changes_requested { background: rgba(248,113,113,.2); color: #fca5a5; }
+.status-approved { background: rgba(52,211,153,.2); color: #6ee7b7; }
+.status-sent { background: rgba(56,189,248,.2); color: #7dd3fc; }
+.status-accepted { background: rgba(20,184,166,.25); color: #5eead4; }
+.status-rejected { background: rgba(248,113,113,.25); color: #f87171; }
+.filter-tabs { flex-wrap: wrap; }
+.login-switch { text-align: center; margin-top: 14px; color: var(--text-sec); font-size: 0.9rem; }
+.linkish {
+  background: none; border: none; color: var(--gold); cursor: pointer; font: inherit;
+  text-decoration: underline; padding: 0;
+}
+.session-role { text-transform: capitalize; }
